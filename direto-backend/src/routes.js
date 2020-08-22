@@ -35,9 +35,7 @@ function verifyJWT(request, response, next){
 
 
 
-routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
-routes.delete('/users/:id', UserController.delete);
 
 routes.post('/sessions', SessionController.store);
 

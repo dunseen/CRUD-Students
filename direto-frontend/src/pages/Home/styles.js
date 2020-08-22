@@ -30,5 +30,4 @@ export const Header = styled.header`
             outline: 0;
         }
     }
-
 `;

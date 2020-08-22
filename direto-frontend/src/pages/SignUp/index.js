@@ -27,9 +27,9 @@ export default function SignUp() {
     try {
 
       const schema = Yup.object().shape({
-        name: Yup.string().required('Nome obrigatório !'),
-        email: Yup.string().required('E-mail obrigatório !').email('Digite um e-mail válido!'),
-        password: Yup.string().min(6, 'No mínimo 6 dígitos !'),
+        name: Yup.string().required('Name required !'),
+        email: Yup.string().required('E-mail required !').email('Enter a valid E-mail Adress !'),
+        password: Yup.string().min(6, 'Min 6 characters!'),
       })
 
       await schema.validate(data, {
@@ -37,7 +37,7 @@ export default function SignUp() {
       });
 
       await api.post('/users', data);
-      toast.success('Cadastro realizado !');
+      toast.success('Register Success !');
 
       history.push('/');
 
@@ -50,7 +50,7 @@ export default function SignUp() {
         setLoading(false);
         return;
       }
-      toast.error('Falha ao criar usuário, tente novamente !');
+      toast.error('Fail on register user, try again !');
       setLoading(false);
 
     }

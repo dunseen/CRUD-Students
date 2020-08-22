@@ -38,10 +38,10 @@ function AddEditForm(props) {
         if(response.data){
             await props.addItemToState(response.data);
             await props.toggle();
-            toast.success('Estudante cadastrado com sucesso !');
+            toast.success('Register Success!');
 
         }else {
-            toast.error('Falha ao cadastrar estudante, tente novamente !');
+            toast.error('Failed on register, try again !');
         }
         
         
@@ -64,11 +64,11 @@ function AddEditForm(props) {
             props.updateState(response.data);
             props.toggle();
 
-            toast.success('Atualização concluida !');
+            toast.success('Update success !');
         }
     } catch (error) {
         console.log(error);
-        toast.error('Falha na atualização dos dados !');
+        toast.error('Failed on update !');
     }
     }
 

@@ -63,7 +63,7 @@ export default function Home(props){
         </Row>
         <Row>
           <Col>
-            <ModalForm buttonLabel="Add Student" addItemToState={addItemToState}/>
+            <ModalForm buttonLabel="Add Student" addItemToState={addItemToState} className='modal'/>
           </Col>
         </Row>
       </Container>

@@ -30,8 +30,8 @@ export default function Login() {
     try {
 
       const schema = Yup.object().shape({
-        email: Yup.string().required('E-mail obrigatório !'),
-        password: Yup.string().required('Senha obrigatória!')
+        email: Yup.string().required('E-mail required !'),
+        password: Yup.string().required('Password required !')
       })
 
       await schema.validate(data, {
@@ -53,7 +53,7 @@ export default function Login() {
         setLoading(false);
         return;
       }
-      toast.error('Falha na autenticação, verifique seus dados.')
+      toast.error('Authentication failed, verify your credentials.')
       setLoading(false);
 
     }

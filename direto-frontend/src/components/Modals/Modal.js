@@ -35,7 +35,7 @@ function ModalForm(props) {
   return (
     <div>
       {button}
-      <Modal isOpen={modal} toggle={toggle} className={props.className}>
+      <Modal isOpen={modal} toggle={toggle} className={props.className} style={{color: '#343a40'}}>
         <ModalHeader toggle={toggle} close={closeBtn}>{title}</ModalHeader>
         <ModalBody>
           <AddEditForm

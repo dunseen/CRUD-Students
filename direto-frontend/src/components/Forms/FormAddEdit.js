@@ -64,11 +64,11 @@ function AddEditForm(props) {
             props.updateState(response.data);
             props.toggle();
 
-            toast.success('Dados do estudante atualizados com sucesso !');
+            toast.success('Atualização concluida !');
         }
     } catch (error) {
         console.log(error);
-        toast.error('Falha ao atualizar os dados do estudante !');
+        toast.error('Falha na atualização dos dados !');
     }
     }
 

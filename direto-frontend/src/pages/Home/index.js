@@ -7,14 +7,16 @@ import DataTable from '../../components/Tables/DataTable'
 import { useAuth } from '../../hooks/authContext';
 import api from '../../services/api';
 
+import { Header } from './styles.js';
+
 export default function Home(props){
     const [items, setItems] = useState([]);
-    const { token } = useAuth();
+    const { token, signOut } = useAuth();
 
     const getItems = async () => {
 
         try {
-            console.log(token)
+            
             const response = await api.get('students' ,{ headers: {'authorization' : `Bearer ${token}`} });
             const data = await response.data;
             setItems(data);
@@ -41,14 +43,17 @@ export default function Home(props){
 
     useEffect(() => {
         getItems()
-        }, []);
+        },[]);
 
     return (
         <>
        <Container className="App">
         <Row>
           <Col>
-            <h1 style={{margin: "20px 0"}}>CRUD Students</h1>
+            <Header>
+            <h1>CRUD Students</h1>
+            <button onClick={() => signOut()}>LogOut</button>
+            </Header>
           </Col>
         </Row>
         <Row>

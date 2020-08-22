@@ -21,9 +21,8 @@ function DataTable(props){
                 props.deleteItemFromState(id)
                 
                 toast.success('Estudante removido com sucesso !');
-            }else {
-                toast.error('Falha ao remover estudante !');
-                }
+            }
+
             }catch (error) {
                 console.log(error);
                 toast.error('Falha na operação, tente novamente !');
@@ -42,7 +41,7 @@ function DataTable(props){
             <div style={{width:"110px"}}>
             <ModalForm buttonLabel="Edit" item={item} updateState={props.updateState} />
             {' '}
-            <Button color="danger" onClick={() => deleteItem(item.id)}>Remove</Button>
+            <Button color="danger" onClick={() => deleteItem(item.id)}>Del</Button>
             <ToastContainer />
             </div>
         </td>

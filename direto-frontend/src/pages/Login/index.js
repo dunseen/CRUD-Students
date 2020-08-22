@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import ReactLoading from 'react-loading';
 import { Form } from '@unform/web'
-import { FiLogIn, FiLock } from "react-icons/fi";
+import { FiLogIn, FiLock, FiMail } from "react-icons/fi";
 import { useHistory, Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
@@ -14,7 +14,8 @@ import Button from '../../components/Button';
 import { ToastContainer, toast } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
-import { Container, Content } from './styles.js'
+
+import { Container, Content, Background, AnimatedContent } from "./styles";
 
 export default function Login() {
   const [loading, setLoading] = useState(false)
@@ -45,9 +46,9 @@ export default function Login() {
       history.push('/home');
 
     }catch(err) {
+      console.log(err);
       if(err instanceof Yup.ValidationError){
         const errors = getValidationErrors(err);
-
         formRef.current.setErrors(errors);
         setLoading(false);
         return;
@@ -61,38 +62,38 @@ export default function Login() {
   return (
     <Container>
       <Content>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <label htmlFor='login'>Login</label>
-          <Input
-            name='email'
-            icon={FiLogIn}
-            type='email'
-            placeholder='Digite seu E-mail'
-          />
+          <AnimatedContent>
+            <Form ref={formRef} onSubmit={handleSubmit}>
+              <h1>Login</h1>
 
-          <label htmlFor='password'>Senha</label>
-          <Input
-            name='password'
-            icon={FiLock}
-            placeholder='Senha'
-            type='password'
-          />
+              <Input name="email" icon={FiMail} placeholder="E-mail" />
+              <Input
+                name="password"
+                icon={FiLock}
+                placeholder="Password"
+                type="password"
+              />
 
-          <Button className='btn' type='submit'>
-            {loading ?<ReactLoading
-            type={'spin'}
-            color={"#f9f9f9"}
-            delay={10}
-            width={'10%'}
-            className='loading'/> : 'Entrar' }
-          </Button>
-          <ToastContainer />
-        </Form>
-        <Link to='/signup'>
-          <FiLogIn />
-          Criar conta
-        </Link>
+              <Button type="submit">
+                {loading ?<ReactLoading
+                type={'spin'}
+                color={"#f9f9f9"}
+                delay={10}
+                width={'10%'}
+                height={'70%'}
+                className='loading'/> : 'Login' }
+                </Button>
+              <ToastContainer />
+            </Form>
+
+            <Link to="/signup">
+              <FiLogIn />
+              SignUp
+            </Link>
+          </AnimatedContent>
+
       </Content>
-    </Container>
+    <Background />
+  </Container>
   )
 }

@@ -2,8 +2,7 @@ import React from 'react';
 import Routes from './routes';
 import AppProvider from './hooks';
 
-import './App.css';
-
+import GlobalStyles from './styles/global';
 function App() {
 
   return (
@@ -11,6 +10,7 @@ function App() {
   <AppProvider>
       <Routes />
   </AppProvider>
+  <GlobalStyles />
   </>
   )
 }

@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import Tooltip from "../Tooltip";
 
 export const Container = styled.div`
-  background: #0000A6 ;
+  background: #628cae ;
   border-radius: 10px;
-  border: 2px solid #0000A6;
+  border: 2px solid #628cae;
   padding: 12px;
   width: 100%;
   color: #f4ede8;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   ${(props) =>
     props.isErrored &&
     css`
-      border-color: #c53030;
+      border-color: #20b2aa;
     `}
 
   ${(props) =>
@@ -60,10 +60,10 @@ export const Error = styled(Tooltip)`
   }
 
   span {
-    background: #c53030;
+    background: #20b2aa;
     color: #f4ede8;
     &::before {
-      border-color: #c53030 transparent;
+      border-color: #20b2aa transparent;
     }
   }
 `;

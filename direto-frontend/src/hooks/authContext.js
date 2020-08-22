@@ -21,12 +21,10 @@ const AuthProvider = ({children}) => {
     const response = await api.post('sessions', { email, password});
     const { token, user } = response.data;
 
-      if(token !== '') {
-        localStorage.setItem('@Direto-front:token', token);
-        localStorage.setItem('@Direto-front:user', JSON.stringify(user));
-  
-        setData({token, user});
-      }  
+    localStorage.setItem('@Direto-front:token', token);
+    localStorage.setItem('@Direto-front:user', JSON.stringify(user));
+
+    setData({token, user}); 
 
   }
   async function signOut(){

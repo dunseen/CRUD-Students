@@ -16,41 +16,49 @@ import { Container, Content, Background, AnimatedContent } from "./styles";
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function SignUp() {
+
   const [loading, setLoading] = useState(false)
+  const [user, setUser] = useState([]);
+  const [userEmail, setUserEmail] = useState([]);
 
   const formRef = useRef();
-
   const history = useHistory();
 
+
   async function handleSubmit(data) {
+
     setLoading(true);
+
     try {
+  
 
       const schema = Yup.object().shape({
         name: Yup.string().required('Name required !'),
         email: Yup.string().required('E-mail required !').email('Enter a valid E-mail Adress !'),
         password: Yup.string().min(6, 'Min 6 characters!'),
-      })
+      });
 
       await schema.validate(data, {
         abortEarly: false,
       });
 
       await api.post('/users', data);
-      toast.success('Register Success !');
 
       history.push('/');
-
+      
+      toast.success('Register Success !')
 
     }catch(err) {
+      
       if(err instanceof Yup.ValidationError){
         const errors = getValidationErrors(err);
 
         formRef.current.setErrors(errors);
+        toast.error('Verify your credentials!');
         setLoading(false);
         return;
       }
-      toast.error('Fail on register user, try again !');
+      toast.error('E-mail already exists !');
       setLoading(false);
 
     }
@@ -82,6 +90,7 @@ export default function SignUp() {
               height={'70%'}
               className='loading'/> : 'SignUp' }
             </Button>
+            <ToastContainer />
         </Form>
 
         <Link to="/">

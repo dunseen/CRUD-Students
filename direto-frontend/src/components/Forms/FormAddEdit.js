@@ -35,18 +35,13 @@ function AddEditForm(props) {
             phone: form.phone,
         }, {headers: {'Authorization': `Bearer ${token}`} } );
 
-        if(response.data){
-            await props.addItemToState(response.data);
-            await props.toggle();
-            toast.success('Register Success!');
-
-        }else {
-            toast.error('Failed on register, try again !');
-        }
-        
-        
+        await props.addItemToState(response.data);
+        await props.toggle();
+        toast.success('Register Success!');
+           
     } catch (error) {
-        console.log(error);
+        toast.error('Student already exist !')
+
     }
     }
 

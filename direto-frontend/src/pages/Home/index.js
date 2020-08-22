@@ -8,6 +8,7 @@ import { useAuth } from '../../hooks/authContext';
 import api from '../../services/api';
 
 import { Header } from './styles.js';
+import { toast } from 'react-toastify';
 
 export default function Home(props){
     const [items, setItems] = useState([]);
@@ -26,8 +27,9 @@ export default function Home(props){
         }
     }
 
-    const addItemToState =  (item) => {
-        setItems([...items, item]);
+    const addItemToState =  async (item) => {
+      setItems([...items,item])
+     
     }
 
     const updateState =  (item) => {

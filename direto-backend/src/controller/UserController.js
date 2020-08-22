@@ -21,7 +21,7 @@ module.exports = {
         });
 
         if(userVerify){
-            return response.status(400).json({error: 'E-mail already exists !'});
+            return response.status(400).json({error: 'Email address already exists !'});
         }
 
         try {

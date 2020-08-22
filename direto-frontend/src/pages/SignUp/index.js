@@ -73,7 +73,15 @@ export default function SignUp() {
             type="password"
           />
 
-          <Button type="submit">SignUp</Button>
+          <Button type="submit">
+            {loading ?<ReactLoading
+              type={'spin'}
+              color={"#f9f9f9"}
+              delay={10}
+              width={'10%'}
+              height={'70%'}
+              className='loading'/> : 'SignUp' }
+            </Button>
         </Form>
 
         <Link to="/">

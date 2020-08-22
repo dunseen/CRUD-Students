@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Button } from 'reactstrap'
 
 import ModalForm from '../../components/Modals/Modal'
 import DataTable from '../../components/Tables/DataTable'
@@ -51,8 +51,8 @@ export default function Home(props){
         <Row>
           <Col>
             <Header>
-            <h1>CRUD Students</h1>
-            <button onClick={() => signOut()}>LogOut</button>
+            <h1>Students List</h1>
+            <Button color="danger" onClick={() => signOut()}>LogOut</Button>
             </Header>
           </Col>
         </Row>
@@ -63,7 +63,7 @@ export default function Home(props){
         </Row>
         <Row>
           <Col>
-            <ModalForm buttonLabel="Add Item" addItemToState={addItemToState}/>
+            <ModalForm buttonLabel="Add Student" addItemToState={addItemToState}/>
           </Col>
         </Row>
       </Container>

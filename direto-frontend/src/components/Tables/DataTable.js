@@ -41,7 +41,7 @@ function DataTable(props){
             <div style={{width:"110px"}}>
             <ModalForm buttonLabel="Edit" item={item} updateState={props.updateState} />
             {' '}
-            <Button color="danger" onClick={() => deleteItem(item.id)}>Del</Button>
+            <Button outline color="info" onClick={() => deleteItem(item.id)}>Del</Button>
             <ToastContainer />
             </div>
         </td>
@@ -50,7 +50,7 @@ function DataTable(props){
     })
 
   return (
-    <Table responsive hover>
+    <Table responsive hover dark>
       <thead>
         <tr>
           <th>ID</th>

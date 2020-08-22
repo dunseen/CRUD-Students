@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished'
 
 export const Header = styled.header`
     display: flex;
@@ -14,24 +15,20 @@ export const Header = styled.header`
         margin-top: 20px 0;
         text-align: center;
     }
-    
-    button {
-        width: 70px;
-        height: 40px;
-        border: 1px solid #fff;
-        border-radius: 8px;
-        background: #e02041;
 
-        color: #fff;
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 16px;
-        
-        transition: filter 0.2s;
-        cursor: pointer;
+    button {
+        background: #343a40;
+        border:0;
+        height: 40px;
+        align-self: center;
 
         &:hover {
-            filter: brightness(90%);
+            background: ${shade(0.2, "#343a40")};
+        }
+
+        &:focus {
+            outline: 0;
         }
     }
+
 `;

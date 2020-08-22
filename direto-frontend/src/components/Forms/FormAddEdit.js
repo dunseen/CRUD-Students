@@ -94,7 +94,7 @@ function AddEditForm(props) {
         <Label for="phone">Phone</Label>
         <Input type="text" name="phone" id="phone" onChange={onChange} value={form.phone === null ? '' : form.phone} />
       </FormGroup>
-      <Button>Submit</Button>
+      <Button color='info'>Submit</Button>
       <ToastContainer/>
     </Form>
   )

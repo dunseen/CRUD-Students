@@ -9,7 +9,7 @@ import api from '../../services/api';
 import 'react-toastify/dist/ReactToastify.css'
 
 function AddEditForm(props) {
-    const { token } = useAuth();
+    const { token, user } = useAuth();
 
     const[form, setForm] = useState({
         id: 0,
@@ -29,7 +29,7 @@ function AddEditForm(props) {
     e.preventDefault()
     
     try {
-        const response = await api.post('students',{
+        const response = await api.post(`/users/${user.id}/students`,{
             name: form.name,
             email: form.email,
             phone: form.phone,
@@ -49,7 +49,7 @@ function AddEditForm(props) {
     e.preventDefault()
     
     try {
-        const response = await api.put(`students/${form.id}`, {
+        const response = await api.put(`users/$${user.id}/students/${form.id}`, {
             name: form.name,
             email: form.email,
             phone: form.phone,

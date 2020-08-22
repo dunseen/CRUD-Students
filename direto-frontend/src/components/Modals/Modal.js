@@ -21,14 +21,14 @@ function ModalForm(props) {
               onClick={toggle}
               style={{float: "left", marginRight:"10px"}}>{label}
             </Button>
-    title = 'Atualizar dados do Estudante'
+    title = 'Update student data'
   } else {
     button = <Button
               color="info"
               onClick={toggle}
               style={{float: "left", marginRight:"10px"}}>{label}
             </Button>
-    title = 'Cadastrar novo Estudante'
+    title = 'Register new Student'
   }
 
 

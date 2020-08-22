@@ -12,15 +12,16 @@ import { toast } from 'react-toastify';
 
 export default function Home(props){
     const [items, setItems] = useState([]);
-    const { token, signOut } = useAuth();
+    const { token, signOut, user } = useAuth();
 
     const getItems = async () => {
 
         try {
+          
+          const response = await api.get(`users/${user.id}/students` ,{ headers: {'authorization' : `Bearer ${token}`} });
+          const data = await response.data;
+          setItems(data.students);
             
-            const response = await api.get('students' ,{ headers: {'authorization' : `Bearer ${token}`} });
-            const data = await response.data;
-            setItems(data);
             
         } catch (error) {
             console.log(error);
@@ -28,6 +29,7 @@ export default function Home(props){
     }
 
     const addItemToState =  async (item) => {
+
       setItems([...items,item])
      
     }

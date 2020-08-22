@@ -9,6 +9,13 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
        },
+       userId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {model: 'Users', key: 'id'},
+        onUpade: 'CASCADE',
+        onDelete: 'CASCADE'
+       },
        name: {
          type: Sequelize.STRING,
          allowNull: false,

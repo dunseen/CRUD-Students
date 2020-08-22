@@ -39,9 +39,9 @@ routes.post('/users', UserController.store);
 
 routes.post('/sessions', SessionController.store);
 
-routes.get('/students', verifyJWT,StudentController.index);
-routes.post('/students' , verifyJWT,StudentController.store);
-routes.put('/students/:id', verifyJWT,StudentController.update);
-routes.delete('/students/:id', verifyJWT,StudentController.delete);
+routes.get('/users/:user_id/students', verifyJWT,StudentController.index);
+routes.post('/users/:user_id/students/' , verifyJWT,StudentController.store);
+routes.put('/users/:user_id/students/:id', verifyJWT,StudentController.update);
+routes.delete('/users/:user_id/students/:id', verifyJWT,StudentController.delete);
 
 module.exports = routes;

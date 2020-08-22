@@ -10,22 +10,22 @@ import api from '../../services/api';
 import 'react-toastify/dist/ReactToastify.css';
 
 function DataTable(props){
-    const { token } = useAuth();
+    const { token, user } = useAuth();
     
     const deleteItem = async (id) => {
         try {
-            let confirmDelete = window.confirm('Remover os dados do estudante ?');
+            let confirmDelete = window.confirm('Delete student data ?');
 
             if(confirmDelete){
-                await api.delete(`students/${id}`, {headers: {'Authorization': `Bearer ${token}`} });
+                await api.delete(`/users/${user.id}/students/${id}`, {headers: {'Authorization': `Bearer ${token}`} });
                 props.deleteItemFromState(id)
                 
-                toast.success('Estudante removido com sucesso !');
+                toast.success('Student removed.');
             }
 
             }catch (error) {
                 console.log(error);
-                toast.error('Falha na operação, tente novamente !');
+                toast.error('Fail on delete, try again.');
             }  
     }
 

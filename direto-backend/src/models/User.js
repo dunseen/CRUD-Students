@@ -20,6 +20,10 @@ class User extends Model {
             sequelize: connection
         });
     }
+
+    static associate(models){
+        this.hasMany(models.Student, { foreignKey: 'userId', as: 'students' });
+    }
 }
 
 module.exports = User;

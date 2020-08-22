@@ -1,32 +1,50 @@
+const User = require('../models/User');
 const Student =  require('../models/Student');
 
 const { uuid } = require('uuidv4');
+const { response } = require('express');
 
 module.exports = {
     async index(request, response) {
-        const students = await Student.findAll();
+        const { user_id } =  request.params;
 
-        return response.json(students);
-    },
-    async store(request, response) {
-        const { name, email, phone } = request.body;
-
-        const exists = await Student.findOne({
-            where: {
-                email: email,
-            }
+        const user = await User.findByPk(user_id, {
+            include: {association: 'students'}
         });
 
-        if (exists) {
+        if(!user){
+            return response.status(400).json({error: 'User not found.'});
+        }
+
+
+
+        return response.json(user);
+    },
+    async store(request, response) {
+        const { user_id } = request.params;
+        const { name, email, phone } = request.body;
+        
+        const user = await User.findByPk(user_id);
+
+        if(!user) {
+            return response.status(400).json({error: 'User not found'});
+        }
+
+        const emailExists = await Student.findOne({
+            where: { email }
+        });
+
+        if (emailExists) {
             return response.status(400).json({error: 'Email already exists'});
         }
 
         try {
             const student = await Student.create({
-                name: name,
-                email: email,
-                phone: phone,
+                name,
+                email,
+                phone,
                 registration: uuid(),
+                userId:user_id
             });
 
             return response.json(student);
